@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet, KeyboardAvoidingView, 
-ImageBackground, TextInput, TouchableOpacity} from 'react-native';
+ImageBackground, TextInput, TouchableOpacity, StatusBar} from 'react-native';
 
 
+const imgbg = '../../assets/bg1.png'
 
-const imgbg = './src/assets/bg1.png'
-
-export default function App() {
+export default function Login({navigation}) {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -18,7 +17,7 @@ export default function App() {
   return (
     <KeyboardAvoidingView style={styles.container}>
       <ImageBackground source={require(imgbg)} style={styles.container}>
-
+        
         <TextInput
         style={styles.input}
         value={email}
@@ -40,7 +39,10 @@ export default function App() {
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.link}>
+        <TouchableOpacity 
+        style={styles.link}
+        onPress={() => navigation.navigate('Cadastro')}
+        >
           <Text style={styles.linkText}>Não possui cadastro? CADASTRE-SE!</Text>
         </TouchableOpacity>
 
